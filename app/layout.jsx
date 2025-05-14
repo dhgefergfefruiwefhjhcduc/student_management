@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-
+import { Suspense } from "react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,10 +23,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Suspense>
         {children}
 <Script
           src="https://cdn.lordicon.com/lordicon.js"
-          strategy="afterInteractive" />      </body>
+          strategy="afterInteractive" />   
+          </Suspense>   
+          </body>
     </html>
   );
 }

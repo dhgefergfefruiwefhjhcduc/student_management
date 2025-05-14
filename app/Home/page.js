@@ -9,7 +9,16 @@ import { signOut } from "firebase/auth";
 export default function Home() {
   const router = useRouter();
   const [user, loading] = useAuthState(auth);
-  const usersession = sessionStorage.getItem("user");
+  const [usersession, setUserSession] = useState(null);
+    const [isSessionLoading, setIsSessionLoading] = useState(true); // Add a loading state for usersession
+
+   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const session = sessionStorage.getItem("user");
+      setUserSession(session);
+      setIsSessionLoading(false);
+    }
+  }, []);
 
   const [students, setStudents] = useState([]);
   const [originalStudents, setOriginalStudents] = useState([]);
@@ -17,10 +26,12 @@ export default function Home() {
   const [search, setsearch] = useState("");
 
   useEffect(() => {
-    if (!loading && (!user || !usersession)) {
-      router.push("/signup");
+    if (!loading && !isSessionLoading) {
+      if (!user || !usersession) {
+        router.push("/signup");
+      }
     }
-  }, [user, usersession, loading, router]);
+  }, [user, usersession, loading, isSessionLoading, router]);
 
   useEffect(() => {
     const fetchStudents = async () => {
