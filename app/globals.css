@@ -88,3 +88,21 @@ button {
 button:hover {
   transform: scale(1.05);
 }
+@media (max-width: 500px) {
+  /* Mobile styles */
+ .mob{
+  display:flex
+ }
+ .pc{
+  display:none
+ }
+}
+@media (min-width: 500px) {
+  /* Mobile styles */
+ .mob{
+  display:none
+ }
+ .pc{
+  display:flex
+ }
+}

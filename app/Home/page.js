@@ -188,6 +188,19 @@ export default function Home() {
             ></lord-icon>
             Add New Student
           </button>
+          <button className="mob"
+            onClick={handelall}
+            style={{
+              backgroundColor: "#22c55e",
+              color: "white",
+              padding: "10px 20px",
+              borderRadius: "6px",
+              border: "none",
+              cursor: "pointer"
+            }}
+          >
+            Show All
+          </button>
         </div>
 
         <div style={{ display: "flex", gap: "1rem", marginBottom: "2rem" }}>
@@ -223,7 +236,7 @@ export default function Home() {
               style={{ width: "25px", height: "25px" }}
             ></lord-icon>
           </button>
-          <button
+          <button className="pc"
             onClick={handelall}
             style={{
               backgroundColor: "#22c55e",
@@ -262,7 +275,7 @@ export default function Home() {
                     <td style={{ padding: "10px", textAlign: "center" }}>{student.phnum}</td>
                     <td style={{ padding: "10px", textAlign: "center" }}>{student.email}</td>
                     <td style={{ padding: "10px", textAlign: "center" }}>{student.address}</td>
-                    <td style={{ padding: "10px", textAlign: "center" }}>
+                    <td style={{ padding: "10px", textAlign: "center" }} className="flex">
                       <button
                         onClick={(e) => {
                           e.stopPropagation();
